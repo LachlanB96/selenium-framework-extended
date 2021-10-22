@@ -1,4 +1,4 @@
-package sample;
+package com;
 
 import org.openqa.selenium.NoSuchElementException;
 
@@ -10,8 +10,8 @@ public class CustomException extends Exception {
 
         super();
 
-        System.out.println(e);
-        System.out.println(message);
+//        System.out.println(e);
+//        System.out.println(message);
 
 //        if(e == NoSuchElementException){
 //            //Do Stuff

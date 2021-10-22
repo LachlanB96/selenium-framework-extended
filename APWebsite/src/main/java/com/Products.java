@@ -1,4 +1,4 @@
-package sample;
+package com;
 
 import org.openqa.selenium.WebElement;
 

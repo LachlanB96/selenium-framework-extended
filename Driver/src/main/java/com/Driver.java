@@ -1,4 +1,4 @@
-package sample;
+package com;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -27,6 +27,13 @@ public class Driver {
     }
 
     public static void goToURL(String url){
+        if(!getProtocol(url).equals("http") || getProtocol(url).equals("https")) {
+            try {
+                throw new UnsupportedProtocolException(getProtocol(url));
+            } catch (Exception | UnsupportedProtocolException e) {
+                e.printStackTrace();
+            }
+        }
         try {
             currentDriver.get(url);
         } catch  (Exception e) {
@@ -34,10 +41,9 @@ public class Driver {
         }
     }
 
-    public static Product findElement(By locator) throws CustomException {
+    public static WebElement findElement(By locator) throws CustomException {
         try {
-            Product product = new Product(currentDriver.findElement(locator));
-            return product;
+            return currentDriver.findElement(locator);
         } catch (NoSuchElementException e){
             throw new CustomException(e, "No such element exists");
         } catch (Exception e){
@@ -45,11 +51,26 @@ public class Driver {
         }
     }
 
+//    public static Product findProduct(By locator) throws CustomException {
+//        try {
+//            Product product = new Product(currentDriver.findElement(locator));
+//            return product;
+//        } catch (NoSuchElementException e){
+//            throw new CustomException(e, "No such element exists");
+//        } catch (Exception e){
+//            throw new CustomException(e, "Generic exception caught");
+//        }
+//    }
+
     public static List<WebElement> findElements(By locator){
         return currentDriver.findElements(locator);
     }
 
     public static void implicitTimeout(long time){
         currentDriver.manage().timeouts().implicitlyWait(Duration.ofMillis(time));
+    }
+
+    private static String getProtocol(String url){
+        return url.split(":")[0];
     }
 }
