@@ -1,4 +1,4 @@
-package com;
+package exceptions;
 
 public class ElementNotFoundException extends ParentException {
     ElementNotFoundException(){

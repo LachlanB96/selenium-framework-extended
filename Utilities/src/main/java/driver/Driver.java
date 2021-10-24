@@ -1,4 +1,7 @@
-package com;
+package driver;
+
+import exceptions.CustomException;
+import exceptions.UnsupportedProtocolException;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -9,6 +12,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.time.Duration;
 import java.util.List;
 import java.util.Objects;
+
 
 public class Driver {
 

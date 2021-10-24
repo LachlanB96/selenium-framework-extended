@@ -1,31 +1,32 @@
 package com;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 import java.time.Duration;
-import java.util.List;
 
 public class App {
 
     public static void main(String[] args) {
 
-        String testURL = "http://www.google.com";
+        String testURL = "http://automationpractice.com";
+        String testURL2 = "http://www.google.com";
         String testURL1 = "hthtp://www.google.com";
+        String testURL0 = "http://www.bing.com";
 
 
         Driver.setCurrentDriver("chrome");
         Driver.goToURL(testURL);
 
 
+
+
         Driver.implicitTimeout(1000);
-        String testURL2 = "http://www.bing.com";
+
         //Driver.goToURL(testURL2);
         //com.Product product = Driver.findElement(By.id("lst-ib"));
         WebDriverWait wait = new WebDriverWait(Driver.getCurrentDriver(), Duration.ofSeconds(1));

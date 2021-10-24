@@ -1,4 +1,4 @@
-package com;
+package exceptions;
 
 import org.openqa.selenium.NoSuchElementException;
 
