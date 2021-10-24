@@ -19,12 +19,7 @@
     <dependencies>
         <dependency>
             <groupId>org.example</groupId>
-            <artifactId>Driver</artifactId>
-            <version>0.0.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.example</groupId>
-            <artifactId>Exceptions</artifactId>
+            <artifactId>Utilities</artifactId>
             <version>0.0.1</version>
         </dependency>
         <dependency>
