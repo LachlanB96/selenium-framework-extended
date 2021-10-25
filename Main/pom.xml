@@ -24,8 +24,8 @@
         </dependency>
         <dependency>
             <groupId>org.example</groupId>
-            <artifactId>APWebsite</artifactId>
-            <version>0.0.1</version>
+            <artifactId>Websites</artifactId>
+            <version>0.0.2</version>
         </dependency>
     </dependencies>
 

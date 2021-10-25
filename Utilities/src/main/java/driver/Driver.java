@@ -19,8 +19,11 @@ public class Driver {
     private static WebDriver currentDriver;
 
 
-    public static WebDriver getCurrentDriver() {
-        return currentDriver;
+    public static WebDriver getDriver() {
+        if(Driver.currentDriver == null){
+            setCurrentDriver("chrome");
+        }
+        return Driver.currentDriver;
     }
 
     public static void setCurrentDriver(String driver) {
@@ -38,11 +41,7 @@ public class Driver {
                 e.printStackTrace();
             }
         }
-        try {
-            currentDriver.get(url);
-        } catch  (Exception e) {
-            System.out.println("ERROR: " + e);
-        }
+        currentDriver.get(url);
     }
 
     public static WebElement findElement(By locator) throws CustomException {
@@ -76,5 +75,13 @@ public class Driver {
 
     private static String getProtocol(String url){
         return url.split(":")[0];
+    }
+
+    public static void keyInput(By elementSelector, String input, Duration ofMillis) throws CustomException {
+        String[] strArray = input.split("");
+        for(String letter : strArray){
+            Driver.findElement(elementSelector).sendKeys(letter);
+        }
+
     }
 }

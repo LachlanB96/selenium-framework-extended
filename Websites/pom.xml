@@ -9,12 +9,20 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>APWebsite</artifactId>
-    <version>0.0.1</version>
+    <artifactId>Websites</artifactId>
+    <version>0.0.2</version>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>Utilities</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+    </dependencies>
 
 </project>

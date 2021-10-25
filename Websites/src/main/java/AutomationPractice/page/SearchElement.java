@@ -1,4 +1,4 @@
-package com;
+package AutomationPractice.page;
 
 import org.openqa.selenium.WebElement;
 
