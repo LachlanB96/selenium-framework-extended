@@ -12,7 +12,7 @@ public class Test {
 
         String fileName = "./sample.txt";
 
-// Write the content in file
+        // Write the content in file
         try(FileWriter fileWriter = new FileWriter(fileName, true)) {
             String fileContent = "This is a sample text.";
             fileWriter.write(fileContent);
@@ -21,7 +21,7 @@ public class Test {
             // Cxception handling
         }
 
-// Read the content from file
+        // Read the content from file
         try(FileReader fileReader = new FileReader(fileName)) {
             BufferedReader inStream = new BufferedReader(fileReader);
             String inString;

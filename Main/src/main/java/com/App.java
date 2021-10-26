@@ -6,10 +6,11 @@ import driver.FileHandler;
 import exceptions.CustomException;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class App {
 
-    public static void main(String[] args) throws CustomException {
+    public static void main(String[] args) throws CustomException, IOException {
 
 //        String testURL = "http://automationpractice.com";
 //        String testURL2 = "http://www.google.com";
@@ -27,6 +28,22 @@ public class App {
 
         FileHandler.setFileName("./sample.txt");
         FileHandler.initialise();
+
+        ArrayList<String> fileLines = FileHandler.readFile();
+
+        for(String line : fileLines){
+            System.out.println(line);
+        }
+
+        FileHandler.writeFile("Hello new line");
+
+        FileHandler.initialise();
+        fileLines = FileHandler.readFile();
+
+        for(String line : fileLines){
+            System.out.println(line);
+        }
+
 
 
 
