@@ -8,6 +8,8 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 
 import java.time.Duration;
 import java.util.List;
@@ -16,21 +18,27 @@ import java.util.Objects;
 
 public class Driver {
 
-    private static WebDriver currentDriver;
+    private static WebDriver currentWebDriver;
+    private static Wait currentWaitDriver;
 
 
-    public static WebDriver getDriver() {
-        if(Driver.currentDriver == null){
-            setCurrentDriver("chrome");
+    public static WebDriver getWebDriver() {
+        if(Driver.currentWebDriver == null){
+            setCurrentWebDriver("chrome");
+            setCurrentWaitDriver(Driver.currentWebDriver);
         }
-        return Driver.currentDriver;
+        return Driver.currentWebDriver;
     }
 
-    public static void setCurrentDriver(String driver) {
+    public static void setCurrentWebDriver(String driver) {
         if(Objects.equals(driver, "chrome")) {
             System.setProperty("webdriver.chrome.driver", "./chromedriver.exe");
-            Driver.currentDriver = new ChromeDriver();
+            Driver.currentWebDriver = new ChromeDriver();
         }
+    }
+
+    public static void setCurrentWaitDriver(WebDriver driver) {
+        Driver.currentWaitDriver = new FluentWait(driver);
     }
 
     public static void goToURL(String url){
@@ -41,12 +49,12 @@ public class Driver {
                 e.printStackTrace();
             }
         }
-        currentDriver.get(url);
+        currentWebDriver.get(url);
     }
 
     public static WebElement findElement(By locator) throws CustomException {
         try {
-            return currentDriver.findElement(locator);
+            return currentWebDriver.findElement(locator);
         } catch (NoSuchElementException e){
             throw new CustomException(e, "No such element exists");
         } catch (Exception e){
@@ -66,11 +74,11 @@ public class Driver {
 //    }
 
     public static List<WebElement> findElements(By locator){
-        return currentDriver.findElements(locator);
+        return currentWebDriver.findElements(locator);
     }
 
     public static void implicitTimeout(long time){
-        currentDriver.manage().timeouts().implicitlyWait(Duration.ofMillis(time));
+        currentWebDriver.manage().timeouts().implicitlyWait(Duration.ofMillis(time));
     }
 
     private static String getProtocol(String url){
@@ -81,6 +89,8 @@ public class Driver {
         String[] strArray = input.split("");
         for(String letter : strArray){
             Driver.findElement(elementSelector).sendKeys(letter);
+            //currentWaitDriver.wait(ofMillis);
+            Driver.currentWebDriver.manage().timeouts().implicitlyWait(ofMillis);
         }
 
     }

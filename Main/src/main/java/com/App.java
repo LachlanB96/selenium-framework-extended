@@ -1,36 +1,32 @@
 package com;
 
-import AutomationPractice.page.Products;
 import driver.Driver;
 
+import driver.FileHandler;
 import exceptions.CustomException;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-
-import java.time.Duration;
+import java.io.IOException;
 
 public class App {
 
     public static void main(String[] args) throws CustomException {
 
-        String testURL = "http://automationpractice.com";
-        String testURL2 = "http://www.google.com";
-        String testURL1 = "hthtp://www.google.com";
-        String testURL0 = "http://www.bing.com";
+//        String testURL = "http://automationpractice.com";
+//        String testURL2 = "http://www.google.com";
+//        String testURL1 = "hthtp://www.google.com";
+//        String testURL0 = "http://www.bing.com";
+//
+//
+//        Driver.setCurrentWebDriver("chrome");
+//        Driver.implicitTimeout(1000);
+//        Driver.goToURL(testURL);
+//
+//
+//        AutomationPractice.page.HomePage.login();
 
 
-        Driver.setCurrentDriver("chrome");
-        Driver.implicitTimeout(1000);
-        Driver.goToURL(testURL);
-
-
-        AutomationPractice.page.HomePage.login();
-
-
+        FileHandler.setFileName("./sample.txt");
+        FileHandler.initialise();
 
 
 
