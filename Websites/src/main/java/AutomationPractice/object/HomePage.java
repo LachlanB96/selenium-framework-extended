@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 
 public class HomePage {
 
+    public static String homePageURL = "http://automationpractice.com";
+
     public static By loginButton = By.xpath("//*[@id=\"header\"]//a[@class=\"login\"]");
 
     public static By usernameInput = By.xpath("//*[@id=\"email\"]");

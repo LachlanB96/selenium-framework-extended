@@ -1,9 +1,6 @@
 package driver;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 public class FileHandler {
@@ -12,6 +9,7 @@ public class FileHandler {
     private static FileWriter fileWriter;
     private static FileReader fileReader;
     private static BufferedReader inStream;
+    private static BufferedWriter outStream;
 
     public static void initialise() {
         try {
@@ -31,9 +29,8 @@ public class FileHandler {
             String line;
             line = inStream.readLine();
             while(line != null) {
-                System.out.print(line);
                 line = inStream.readLine();
-                System.out.print(line);
+                fileLines.add(line);
             }
             inStream.close();
             fileReader.close();
@@ -47,7 +44,9 @@ public class FileHandler {
 
     public static void writeFile(String line){
         try {
-            fileWriter.write(line + "\n");
+            outStream = new BufferedWriter(fileWriter);
+            outStream.write(line + "\n");
+            outStream.close();
         } catch (Exception e) {
             System.out.println("Error writing to file");
             e.printStackTrace();

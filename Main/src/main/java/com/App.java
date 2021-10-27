@@ -1,49 +1,59 @@
 package com;
 
-import driver.Driver;
-
 import driver.FileHandler;
+import driver.LogHandler;
+import driver.WebHandler;
 import exceptions.CustomException;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class App {
 
     public static void main(String[] args) throws CustomException, IOException {
 
-//        String testURL = "http://automationpractice.com";
-//        String testURL2 = "http://www.google.com";
-//        String testURL1 = "hthtp://www.google.com";
-//        String testURL0 = "http://www.bing.com";
+
+        WebHandler.setCurrentWebDriver("chrome");
+        WebHandler.implicitTimeout(1000);
+        WebHandler.goToURL(AutomationPractice.object.HomePage.homePageURL);
+
+        AutomationPractice.page.HomePage.login();
+
+        LogHandler.printLog(3);
+
+
+//        FileHandler.setFileName("./sample.txt");
+//        FileHandler.initialise();
 //
+//        ArrayList<String> fileLines = FileHandler.readFile();
 //
-//        Driver.setCurrentWebDriver("chrome");
-//        Driver.implicitTimeout(1000);
-//        Driver.goToURL(testURL);
+//        for(String line : fileLines){
+//            System.out.println(line);
+//        }
 //
+//        FileHandler.initialise();
+//        FileHandler.writeFile("Hello new line");
 //
-//        AutomationPractice.page.HomePage.login();
+//        FileHandler.initialise();
+//        fileLines = FileHandler.readFile();
+//
+//        for(String line : fileLines){
+//            System.out.println(line);
+//        }
 
+        //LogHandler.standardLog("Good morning", new Date());
 
-        FileHandler.setFileName("./sample.txt");
-        FileHandler.initialise();
+//        FileHandler.setFileName("standard-log.txt");
+//        FileHandler.initialise();
+//        ArrayList<String> fileLines = FileHandler.readFile();
+//
+//        for(String line : fileLines){
+//            System.out.println(line);
+//        }
 
-        ArrayList<String> fileLines = FileHandler.readFile();
-
-        for(String line : fileLines){
-            System.out.println(line);
-        }
-
-        FileHandler.writeFile("Hello new line");
-
-        FileHandler.initialise();
-        fileLines = FileHandler.readFile();
-
-        for(String line : fileLines){
-            System.out.println(line);
-        }
-
+       // LogHandler.printLog(3);
 
 
 

@@ -16,29 +16,30 @@ import java.util.List;
 import java.util.Objects;
 
 
-public class Driver {
+public class WebHandler {
 
     private static WebDriver currentWebDriver;
     private static Wait currentWaitDriver;
 
 
     public static WebDriver getWebDriver() {
-        if(Driver.currentWebDriver == null){
+        if(WebHandler.currentWebDriver == null){
             setCurrentWebDriver("chrome");
-            setCurrentWaitDriver(Driver.currentWebDriver);
+            setCurrentWaitDriver(WebHandler.currentWebDriver);
         }
-        return Driver.currentWebDriver;
+        return WebHandler.currentWebDriver;
     }
 
     public static void setCurrentWebDriver(String driver) {
         if(Objects.equals(driver, "chrome")) {
             System.setProperty("webdriver.chrome.driver", "./chromedriver.exe");
-            Driver.currentWebDriver = new ChromeDriver();
+            WebHandler.currentWebDriver = new ChromeDriver();
+            LogHandler.standardLog("Chrome Driver set successfully");
         }
     }
 
     public static void setCurrentWaitDriver(WebDriver driver) {
-        Driver.currentWaitDriver = new FluentWait(driver);
+        WebHandler.currentWaitDriver = new FluentWait(driver);
     }
 
     public static void goToURL(String url){
@@ -88,9 +89,9 @@ public class Driver {
     public static void keyInput(By elementSelector, String input, Duration ofMillis) throws CustomException {
         String[] strArray = input.split("");
         for(String letter : strArray){
-            Driver.findElement(elementSelector).sendKeys(letter);
+            WebHandler.findElement(elementSelector).sendKeys(letter);
             //currentWaitDriver.wait(ofMillis);
-            Driver.currentWebDriver.manage().timeouts().implicitlyWait(ofMillis);
+            WebHandler.currentWebDriver.manage().timeouts().implicitlyWait(ofMillis);
         }
 
     }
