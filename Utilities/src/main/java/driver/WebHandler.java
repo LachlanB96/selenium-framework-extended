@@ -11,6 +11,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 
+import javax.naming.OperationNotSupportedException;
 import java.time.Duration;
 import java.util.List;
 import java.util.Objects;
@@ -34,7 +35,7 @@ public class WebHandler {
         if(Objects.equals(driver, "chrome")) {
             System.setProperty("webdriver.chrome.driver", "./chromedriver.exe");
             WebHandler.currentWebDriver = new ChromeDriver();
-            LogHandler.standardLog("Chrome Driver set successfully");
+            LogHandler.standardLog("Chrome Driver set successfully", "INFO");
         }
     }
 
@@ -42,15 +43,14 @@ public class WebHandler {
         WebHandler.currentWaitDriver = new FluentWait(driver);
     }
 
-    public static void goToURL(String url){
-        if(!getProtocol(url).equals("http") || getProtocol(url).equals("https")) {
-            try {
-                throw new UnsupportedProtocolException(getProtocol(url));
-            } catch (Exception | UnsupportedProtocolException e) {
-                e.printStackTrace();
-            }
+    public static void goToURL(String url) throws UnsupportedProtocolException, OperationNotSupportedException {
+        if(!getProtocol(url).equals("http") || getProtocol(url).equals("https"))
+            throw new UnsupportedProtocolException(getProtocol(url));
+        try {
+            currentWebDriver.get(url);
+        } catch (Throwable e){
+            throw new OperationNotSupportedException("Unable to naviagte to URL " + url);
         }
-        currentWebDriver.get(url);
     }
 
     public static WebElement findElement(By locator) throws CustomException {

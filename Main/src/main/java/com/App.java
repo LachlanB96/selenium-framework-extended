@@ -4,7 +4,9 @@ import driver.FileHandler;
 import driver.LogHandler;
 import driver.WebHandler;
 import exceptions.CustomException;
+import exceptions.UnsupportedProtocolException;
 
+import javax.naming.OperationNotSupportedException;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,17 +14,18 @@ import java.util.Date;
 
 public class App {
 
-    public static void main(String[] args) throws CustomException, IOException {
+    public static void main(String[] args) throws CustomException, IOException, OperationNotSupportedException, UnsupportedProtocolException {
 
 
         WebHandler.setCurrentWebDriver("chrome");
         WebHandler.implicitTimeout(1000);
-        WebHandler.goToURL(AutomationPractice.object.HomePage.homePageURL);
 
-        AutomationPractice.page.HomePage.login();
+        AutomationPractice.Service.login();
 
         LogHandler.printLog(3);
 
+
+        //PLEASE EXCUSE THIS MESS OF COMMENTS
 
 //        FileHandler.setFileName("./sample.txt");
 //        FileHandler.initialise();

@@ -31,9 +31,9 @@ public class HomePage {
 
         try {
             WebHandler.findElement(AutomationPractice.object.HomePage.logoutButton);
-            LogHandler.standardLog("Login successful");
+            LogHandler.standardLog("Login successful", "INFO");
         } catch (CustomException e) {
-            LogHandler.standardLog("Login NOT successful");
+            LogHandler.standardLog("Login NOT successful", "WARN");
         }
     }
 

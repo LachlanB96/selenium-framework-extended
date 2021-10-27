@@ -9,13 +9,13 @@ import static java.lang.String.format;
 
 public class LogHandler {
 
-    public static void standardLog(String message){
+    public static void standardLog(String message, String level){
         FileHandler.setFileName("standard-log.txt");
         FileHandler.initialise();
 
         SimpleDateFormat formatter = new SimpleDateFormat("kk:mm:ss");
         String timeIn24Hours = formatter.format(new Date());
-        String logMessage = format("[%s] %s", timeIn24Hours, message);
+        String logMessage = format("[%s][%s] %s", timeIn24Hours, level, message);
 
         FileHandler.writeFile(logMessage);
     }
