@@ -23,3 +23,7 @@ Feature: Login
 #    When I enter my credentials
 #    Then I will be logged in
 #
+
+#  | username | password | expectedOutcome |
+#  | test@lachlanb.com | password | true |
+#  | fake@fake.com | wrongpassword | false |
