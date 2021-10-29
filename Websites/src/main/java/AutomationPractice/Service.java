@@ -12,4 +12,8 @@ public class Service {
         WebHandler.goToURL(AutomationPractice.object.HomePage.homePageURL);
         AutomationPractice.page.HomePage.login();
     }
+
+    public static boolean isLoggedIn(){
+        return AutomationPractice.page.HomePage.checkLoggedIn();
+    }
 }

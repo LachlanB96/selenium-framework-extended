@@ -18,12 +18,12 @@ public class HomePage {
 
         //Using a custom input method, send the username with a 0.1 second delay
         WebHandler.keyInput(AutomationPractice.object.HomePage.usernameInput,
-                AutomationPractice.model.User.username,
+                AutomationPractice.model.User.getUsername(),
                 Duration.ofMillis(100));
 
         //Using a custom input method, send the password with a 0.1 second delay
         WebHandler.keyInput(AutomationPractice.object.HomePage.passwordInput,
-                User.password,
+                User.getPassword(),
                 Duration.ofMillis(100));
 
         //Click the submit button to complete sign in
@@ -37,4 +37,12 @@ public class HomePage {
         }
     }
 
+    public static boolean checkLoggedIn() {
+        try {
+            WebHandler.findElement(AutomationPractice.object.HomePage.logoutButton);
+            return true;
+        } catch (CustomException e) {
+            return false;
+        }
+    }
 }

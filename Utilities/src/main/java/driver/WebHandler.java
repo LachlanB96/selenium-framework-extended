@@ -33,7 +33,7 @@ public class WebHandler {
 
     public static void setCurrentWebDriver(String driver) {
         if(Objects.equals(driver, "chrome")) {
-            System.setProperty("webdriver.chrome.driver", "./chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", "C:\\Users\\LachlanB\\IdeaProjects\\selenium-framework-extended\\chromedriver.exe");
             WebHandler.currentWebDriver = new ChromeDriver();
             LogHandler.standardLog("Chrome Driver set successfully", "INFO");
         }
