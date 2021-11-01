@@ -1,9 +1,14 @@
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
+
+//TODO Make a class for products, create a test that contains a list of products and tests if they are cheap enough to buy referencing from a price list (map)
 
 public class MyTestStepdefs {
 
@@ -36,4 +41,31 @@ public class MyTestStepdefs {
         }
     }
 
+    @Given("I have the following table of names and initials")
+    public void iHaveTheFollowingTableOfNamesAndInitials(DataTable table) {
+        List<List<String>> rows = table.asLists(String.class);
+        for (List<String> columns : rows) {
+            System.out.printf(columns.get(0) + " | " + columns.get(1) + "\n");
+        }
+    }
+
+    @When("I search for a name by {string}")
+    public void iSearchForANameBy(String arg0) {
+        
+    }
+
+    @When("I search for a name by {string} <x> <y>")
+    public void iSearchForANameByXY(String arg0) {
+    }
+
+    @Then("I should get the name Lachlan Brown")
+    public void iShouldGetTheNameLachlanBrown() {
+
+    }
+
+
+    @When("I search for a name by {string} {string} {string}")
+    public void iSearchForANameBy(String arg0, String arg1, String arg2) {
+        System.out.printf("%s | %s | %s", arg0, arg1, arg2);
+    }
 }
