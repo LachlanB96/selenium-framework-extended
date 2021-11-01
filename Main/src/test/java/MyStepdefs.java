@@ -70,4 +70,8 @@ public class MyStepdefs {
     public void cucumberTestsAreWorking() {
         assertEquals(testString1, testString2);
     }
+
+    @Given("A value of <a>")
+    public void aValueOfA() {
+    }
 }
