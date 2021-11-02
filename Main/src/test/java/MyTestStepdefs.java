@@ -4,6 +4,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+import java.text.NumberFormat;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -67,5 +68,41 @@ public class MyTestStepdefs {
     @When("I search for a name by {string} {string} {string}")
     public void iSearchForANameBy(String arg0, String arg1, String arg2) {
         System.out.printf("%s | %s | %s", arg0, arg1, arg2);
+    }
+
+    private static List<List<String>> clothesPrices;
+    private static String itemToBuy;
+    private static Double lowestPriceToBuy;
+
+    @Given("I have the following table of clothes and prices")
+    public void iHaveTheFollowingTableOfClothesAndPrices(DataTable table) {
+        clothesPrices = table.asLists(String.class);
+    }
+
+    @When("I search for a item to buy {string}")
+    public void iSearchForAItemToBuy(String arg0) {
+        itemToBuy = arg0;
+    }
+
+    @And("If my lowest price {string} is less than the cost price")
+    public void ifMyLowestPriceIsLessThanTheCostPrice(String arg0) {
+        lowestPriceToBuy = Double.valueOf(arg0.substring(1));
+    }
+
+    @Then("I should be able to buy the item")
+    public void iShouldBeAbleToBuyTheItem() {
+        for (List<String> columns : clothesPrices) {
+            if(columns.get(0).equals(itemToBuy)){
+                System.out.printf("Item %s found! Looking up price... \n", itemToBuy);
+                Double price = Double.valueOf(columns.get(1).substring(1));
+                if(price < lowestPriceToBuy){
+                    System.out.printf("Buying item %s for $%f", itemToBuy, lowestPriceToBuy);
+                    assert true;
+                }
+            } else {
+                System.out.printf("Item not found.");
+            }
+            assert false;
+        }
     }
 }

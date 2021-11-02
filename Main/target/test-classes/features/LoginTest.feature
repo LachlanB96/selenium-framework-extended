@@ -30,8 +30,7 @@ Feature: Login
     Then I wont be logged in
 
   Scenario Outline: Login to the Automation Practice Website using a list of map
-    Given I have the "<username>" username
-    And I have the "<password>" password
+    Given I have the "<username>" username and the "<password>" password
     When I submit the login information
     Then I will be logged in if the "<expectedOutcome>" is true
     Examples:
