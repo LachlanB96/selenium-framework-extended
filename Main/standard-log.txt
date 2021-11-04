@@ -45,3 +45,13 @@
 [23:55:28][INFO] Chrome Driver set successfully
 [10:20:05][INFO] Chrome Driver set successfully
 [10:23:54][INFO] Chrome Driver set successfully
+[11:49:57][INFO] Chrome Driver set successfully
+[11:50:08][INFO] Login successful
+[11:50:08][TEST] Check if user logged in is: true
+[11:54:04][INFO] Chrome Driver set successfully
+[11:54:14][INFO] Login successful
+[11:54:14][TEST] Check if user logged in is: true
+[15:22:16][INFO] Chrome Driver set successfully
+[15:22:49][INFO] Chrome Driver set successfully
+[15:23:30][INFO] Login successful
+[15:23:30][TEST] Check if user logged in is: true
