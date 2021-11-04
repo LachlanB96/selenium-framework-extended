@@ -1,6 +1,6 @@
 package AutomationPractice;
 
-import driver.WebHandler;
+import handlers.WebHandler;
 import exceptions.CustomException;
 import exceptions.UnsupportedProtocolException;
 

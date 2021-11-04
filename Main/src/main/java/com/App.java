@@ -1,16 +1,12 @@
 package com;
 
-import driver.FileHandler;
-import driver.LogHandler;
-import driver.WebHandler;
+import handlers.LogHandler;
+import handlers.WebHandler;
 import exceptions.CustomException;
 import exceptions.UnsupportedProtocolException;
 
 import javax.naming.OperationNotSupportedException;
-import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
 
 public class App {
 

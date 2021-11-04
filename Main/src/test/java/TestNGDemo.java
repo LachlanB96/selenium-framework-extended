@@ -1,9 +1,8 @@
 import AutomationPractice.Service;
-import driver.AssertDriver;
-import driver.WebHandler;
+import handlers.AssertHandler;
+import handlers.WebHandler;
 import exceptions.CustomException;
 import exceptions.UnsupportedProtocolException;
-import org.testng.Assert;
 import org.testng.annotations.*;
 import org.testng.annotations.Test;
 
@@ -69,7 +68,7 @@ public class TestNGDemo {
         AutomationPractice.Service.login();
         //assertTrue(Service.isLoggedIn());
         //Assert.assertTrue(Service.isLoggedIn());
-        AssertDriver.assertTrue(Service.isLoggedIn(), "Check if user logged in");
+        AssertHandler.assertTrue(Service.isLoggedIn(), "Check if user logged in");
     }
 
     @AfterTest

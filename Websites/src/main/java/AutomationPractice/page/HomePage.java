@@ -2,8 +2,8 @@ package AutomationPractice.page;
 
 
 import AutomationPractice.model.User;
-import driver.LogHandler;
-import driver.WebHandler;
+import handlers.LogHandler;
+import handlers.WebHandler;
 import exceptions.CustomException;
 
 import java.time.Duration;

@@ -1,5 +1,5 @@
 import AutomationPractice.model.User;
-import driver.WebHandler;
+import handlers.WebHandler;
 import exceptions.CustomException;
 import exceptions.UnsupportedProtocolException;
 import io.cucumber.java.en.And;

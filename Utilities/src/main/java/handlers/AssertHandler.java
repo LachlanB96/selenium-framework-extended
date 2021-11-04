@@ -1,6 +1,6 @@
-package driver;
+package handlers;
 
-public class AssertDriver {
+public class AssertHandler {
 
     public static boolean assertTrue(boolean assertion){
         LogHandler.standardLog(String.format("%b", assertion), "TEST");
