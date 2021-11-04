@@ -14,7 +14,7 @@ public class AssertDriver {
         //TODO look at soft assertion vs hard assertion
         // add excel file importer
         // make testng test identical to feature file
-        // maven command to run testng test and mavben cmmand to run feature file
+        // Maven command to run testng test and mavben cmmand to run feature file
         // Bonus: run cucumber feature file from testng test (pass dataprovider through testng to cucumber)
     }
 
