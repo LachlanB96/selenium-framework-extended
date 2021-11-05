@@ -10,7 +10,7 @@ public class TestNGRunnerDemo {
         System.out.printf("TestNG Runner Demo");
     }
 
-    @Test
+    //@Test
     public void printInt(){
         System.out.print(99999);
     }
