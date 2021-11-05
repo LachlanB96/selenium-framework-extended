@@ -1,4 +1,7 @@
+import handlers.FileHandler;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 public class TestNGRunnerDemo {
 
@@ -10,6 +13,20 @@ public class TestNGRunnerDemo {
     @Test
     public void printInt(){
         System.out.print(99999);
+    }
+
+    @Test
+    public void writeFile(){
+        FileHandler.setFileName("testRead.txt");
+        FileHandler.initialise();
+        FileHandler.writeFile("Test Line!");
+    }
+
+    @Test
+    public void readFile() throws IOException {
+        FileHandler.setFileName("testRead.txt");
+        FileHandler.initialise();
+        FileHandler.printFile();
     }
 
 }

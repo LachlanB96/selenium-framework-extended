@@ -7,6 +7,8 @@
                 <methods>
                     <include name="printString" />
                     <include name="printInt" />
+                    <include name="writeFile" />
+                    <include name="readFile" />
                 </methods>
             </class>
         </classes>

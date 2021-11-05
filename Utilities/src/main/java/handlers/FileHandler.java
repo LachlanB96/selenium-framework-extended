@@ -42,6 +42,28 @@ public class FileHandler {
         return fileLines;
     }
 
+    public static void printFile() throws IOException {
+        ArrayList<String> fileLines = new ArrayList<String>();
+        try {
+            inStream = new BufferedReader(fileReader);
+            String line;
+            line = inStream.readLine();
+            while(line != null) {
+                line = inStream.readLine();
+                fileLines.add(line);
+            }
+            inStream.close();
+            fileReader.close();
+        } catch (IOException e) {
+            System.out.println("111");
+            e.printStackTrace();
+            throw new IOException();
+        }
+        for(String line : fileLines){
+            System.out.println(line);
+        }
+    }
+
     public static void writeFile(String line){
         try {
             outStream = new BufferedWriter(fileWriter);
