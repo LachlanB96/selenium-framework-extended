@@ -3,14 +3,14 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class TestNGRunnerDemo {
+public class TestNGTest {
 
     @Test
     public void printString(){
         System.out.printf("TestNG Runner Demo");
     }
 
-    //@Test
+    @Test
     public void printInt(){
         System.out.print(99999);
     }
