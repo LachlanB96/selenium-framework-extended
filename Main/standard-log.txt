@@ -85,3 +85,7 @@
 [13:22:19][TEST] Check if user logged in is: true
 [13:31:14][INFO] Chrome Driver set successfully
 [13:31:50][INFO] Chrome Driver set successfully
+[14:51:14][INFO] Chrome Driver set successfully
+[14:51:23][INFO] Login successful
+[14:51:24][INFO] Chrome Driver set successfully
+[14:51:33][WARN] Login NOT successful
