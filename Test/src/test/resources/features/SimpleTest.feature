@@ -1,7 +1,7 @@
 Feature: Login
   # Background: find examples and use
 
-  Scenario: Test cucumber tests 123
+  Scenario: Test cucumber tests
     Given A string containing "123"
     When I check if the given string is 123
     Then Cucumber tests are working

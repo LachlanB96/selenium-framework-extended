@@ -61,3 +61,41 @@
 [12:14:30][INFO] Chrome Driver set successfully
 [12:17:50][INFO] Chrome Driver set successfully
 [12:17:59][INFO] Chrome Driver set successfully
+[12:49:32][INFO] Chrome Driver set successfully
+[12:49:41][INFO] Login successful
+[12:49:41][TEST] Check if user logged in is: true
+[13:02:08][INFO] Chrome Driver set successfully
+[13:02:18][INFO] Login successful
+[13:02:18][TEST] Check if user logged in is: true
+[13:03:34][INFO] Chrome Driver set successfully
+[13:07:00][INFO] Chrome Driver set successfully
+[13:07:51][INFO] Chrome Driver set successfully
+[13:09:36][INFO] Chrome Driver set successfully
+[13:10:52][INFO] Chrome Driver set successfully
+[13:11:02][INFO] Login successful
+[13:11:02][TEST] Check if user logged in is: true
+[13:19:40][INFO] Chrome Driver set successfully
+[13:19:50][INFO] Login successful
+[13:19:50][TEST] Check if user logged in is: true
+[13:20:54][INFO] Chrome Driver set successfully
+[13:21:04][INFO] Login successful
+[13:21:04][TEST] Check if user logged in is: true
+[13:22:09][INFO] Chrome Driver set successfully
+[13:22:19][INFO] Login successful
+[13:22:19][TEST] Check if user logged in is: true
+[13:31:14][INFO] Chrome Driver set successfully
+[13:31:50][INFO] Chrome Driver set successfully
+[14:51:14][INFO] Chrome Driver set successfully
+[14:51:23][INFO] Login successful
+[14:51:24][INFO] Chrome Driver set successfully
+[14:51:33][WARN] Login NOT successful
+[15:13:20][INFO] Chrome Driver set successfully
+[15:13:30][INFO] Login successful
+[15:13:31][INFO] Chrome Driver set successfully
+[15:13:39][WARN] Login NOT successful
+[18:06:47][INFO] Chrome Driver set successfully
+[18:06:57][INFO] Login successful
+[18:06:58][INFO] Chrome Driver set successfully
+[18:07:07][WARN] Login NOT successful
+[18:15:06][INFO] Chrome Driver set successfully
+[18:15:12][INFO] Chrome Driver set successfully
