@@ -1,3 +1,4 @@
+import handlers.PrintHandler;
 import io.cucumber.testng.CucumberOptions;
 import io.cucumber.testng.FeatureWrapper;
 import io.cucumber.testng.PickleWrapper;
@@ -19,10 +20,14 @@ public class CucumberRunnerDemo {
         testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
     }
 
-    @Test(groups = "cucumber123", description = "Runs Cucumber Feature", dataProvider = "features")
+    @Test(description = "Runs Cucumber Feature", dataProvider = "features")
     public void feature(PickleWrapper pickle, FeatureWrapper cucumberFeature) {
-        System.out.printf("Pickle: %s. Cucumber Feature: %s\n.", pickle.toString(), cucumberFeature.toString());
-        testNGCucumberRunner.runScenario(pickle.getPickle());
+
+        System.out.printf("Pickle: %s. Cucumber Feature: %s | %s\n", pickle.getPickle().getName(), cucumberFeature.toString(), cucumberFeature.getClass().getName());
+        if(pickle.getPickle().getName().equals("Test cucumber tests 111")){
+            PrintHandler.colourPrintf(String.format("%s | %s \n", pickle, cucumberFeature.getClass()), "purple");
+        }
+        //testNGCucumberRunner.runScenario(pickle.getPickle());
     }
 
 //    @Test(groups = "cucumber123", description = "Runs Cucumber Feature", dataProvider = "features")

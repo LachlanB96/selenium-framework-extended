@@ -1,3 +1,4 @@
+@SimpleFeature
 Feature: Test Module - String to Int comparison
   # Background: find examples and use
 

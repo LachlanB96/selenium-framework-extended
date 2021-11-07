@@ -59,9 +59,11 @@
             <version>1.2.6</version>
 <!--            <type>pom</type>-->
         </dependency>
-
     </dependencies>
 
+    <build>
+        <defaultGoal>test</defaultGoal>
+    </build>
 <!--    <build>-->
 <!--        <plugins>-->
 <!--            <plugin>-->

@@ -9,6 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <build>
+        <defaultGoal>test</defaultGoal>
+    </build>
+
     <artifactId>Test</artifactId>
     <dependencies>
         <dependency>
@@ -23,5 +27,28 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
+
+<!--    <build>-->
+<!--        <defaultGoal>test</defaultGoal>-->
+<!--        <plugins>-->
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-surefire-plugin</artifactId>-->
+<!--                <version>3.0.0-M5</version>-->
+<!--                <configuration>-->
+<!--&lt;!&ndash;                    <skip>false</skip>&ndash;&gt;-->
+<!--                    <suiteXmlFiles>-->
+<!--                        <suiteXmlFile>src/test/java/TestNG.xml</suiteXmlFile>-->
+<!--                    </suiteXmlFiles>-->
+<!--                    <properties>-->
+<!--                        <property>-->
+<!--                            <name>surefire.testng.verbose</name>-->
+<!--                            <value>10</value>-->
+<!--                        </property>-->
+<!--                    </properties>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
+<!--        </plugins>-->
+<!--    </build>-->
 
 </project>
