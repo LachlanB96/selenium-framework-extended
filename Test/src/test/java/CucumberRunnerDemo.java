@@ -23,11 +23,11 @@ public class CucumberRunnerDemo {
     @Test(description = "Runs Cucumber Feature", dataProvider = "features")
     public void feature(PickleWrapper pickle, FeatureWrapper cucumberFeature) {
 
-        System.out.printf("Pickle: %s. Cucumber Feature: %s | %s\n", pickle.getPickle().getName(), cucumberFeature.toString(), cucumberFeature.getClass().getName());
+        System.out.printf("Pickle: %s. Cucumber Feature: %s\n", pickle.getPickle().getName(), cucumberFeature.toString());
         if(pickle.getPickle().getName().equals("Test cucumber tests 111")){
-            PrintHandler.colourPrintf(String.format("%s | %s \n", pickle, cucumberFeature.getClass()), "purple");
+            PrintHandler.colourPrintf(String.format("%s \n", pickle), "purple");
         }
-        //testNGCucumberRunner.runScenario(pickle.getPickle());
+        testNGCucumberRunner.runScenario(pickle.getPickle());
     }
 
 //    @Test(groups = "cucumber123", description = "Runs Cucumber Feature", dataProvider = "features")

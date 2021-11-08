@@ -6,10 +6,10 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.testng.Assert;
 
 import javax.naming.OperationNotSupportedException;
 
-import static org.junit.Assert.assertEquals;
 
 public class LoginStepdefs {
 
@@ -37,6 +37,6 @@ public class LoginStepdefs {
     @Then("I will be logged in if the {string} is true")
     public void iWillBeLoggedInIfTheIsTrue(String arg0) {
         expectedOutcome = Boolean.parseBoolean(arg0);
-        assertEquals(AutomationPractice.Service.isLoggedIn(), expectedOutcome);
+        Assert.assertEquals(AutomationPractice.Service.isLoggedIn(), expectedOutcome);
     }
 }

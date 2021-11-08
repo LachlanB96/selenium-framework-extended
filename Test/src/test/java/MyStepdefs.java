@@ -2,8 +2,8 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.testng.Assert;
 
-import static org.junit.Assert.assertEquals;
 
 public class MyStepdefs {
 
@@ -31,7 +31,7 @@ public class MyStepdefs {
 
     @Then("Cucumber tests are working")
     public void cucumberTestsAreWorking() {
-        assertEquals(testString1, testString2);
+        Assert.assertEquals(testString1, testString2);
     }
 
     @Given("A value of {int}")

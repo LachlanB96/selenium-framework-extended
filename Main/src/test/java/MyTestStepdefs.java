@@ -4,10 +4,8 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-import java.text.NumberFormat;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
 
 //TODO Make a class for products, create a test that contains a list of products and tests if they are cheap enough to buy referencing from a price list (map)
 

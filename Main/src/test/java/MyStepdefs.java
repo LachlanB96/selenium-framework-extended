@@ -6,10 +6,10 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.testng.Assert;
 
 import javax.naming.OperationNotSupportedException;
 
-import static org.junit.Assert.assertEquals;
 
 public class MyStepdefs {
 
@@ -38,7 +38,7 @@ public class MyStepdefs {
 
     @Then("I will be logged in")
     public void iWillBeLoggedIn() {
-        assertEquals(AutomationPractice.Service.isLoggedIn(), true);
+        Assert.assertEquals(AutomationPractice.Service.isLoggedIn(), true);
     }
 
     @Given("I have the wrong username")
@@ -53,7 +53,7 @@ public class MyStepdefs {
 
     @Then("I wont be logged in")
     public void iWontBeLoggedIn() {
-        assertEquals(AutomationPractice.Service.isLoggedIn(), false);
+        Assert.assertEquals(AutomationPractice.Service.isLoggedIn(), false);
     }
 
     @Given("^A string containing \"(.*?)\"$")
@@ -68,7 +68,7 @@ public class MyStepdefs {
 
     @Then("Cucumber tests are working")
     public void cucumberTestsAreWorking() {
-        assertEquals(testString1, testString2);
+        Assert.assertEquals(testString1, testString2);
     }
 
     @Given("A value of <a>")

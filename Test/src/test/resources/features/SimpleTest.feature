@@ -1,4 +1,4 @@
-Feature: Login
+Feature: Test Module - Scenario Test
   # Background: find examples and use
 
   Scenario: Test cucumber tests

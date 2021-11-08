@@ -8,7 +8,6 @@ import org.testng.annotations.Test;
 
 import javax.naming.OperationNotSupportedException;
 
-import static org.junit.Assert.assertTrue;
 
 public class TestNGDemo {
 
