@@ -9,34 +9,34 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.8.1</version>
-                    <executions>
-                        <execution>
-                            <id>test</id>
-                            <goals>
-                                <goal>testCompile</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>3.0.0-M5</version>
-                    <configuration>
-                        <suiteXmlFiles>
-                            <suiteXmlFile>testng.xml</suiteXmlFile>
-                        </suiteXmlFiles>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
+<!--    <build>-->
+<!--        <pluginManagement>-->
+<!--            <plugins>-->
+<!--&lt;!&ndash;                <plugin>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <groupId>org.apache.maven.plugins</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <artifactId>maven-compiler-plugin</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <version>3.8.1</version>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <executions>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <execution>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <id>test ggg</id>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <goals>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <goal>testCompile</goal>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </goals>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </execution>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </executions>&ndash;&gt;-->
+<!--&lt;!&ndash;                </plugin>&ndash;&gt;-->
+<!--                <plugin>-->
+<!--                    <artifactId>maven-surefire-plugin</artifactId>-->
+<!--                    <version>3.0.0-M5</version>-->
+<!--                    <configuration>-->
+<!--                        <suiteXmlFiles>-->
+<!--                            <suiteXmlFile>src/test/resources/testng/TestNG.xml</suiteXmlFile>-->
+<!--                        </suiteXmlFiles>-->
+<!--                    </configuration>-->
+<!--                </plugin>-->
+<!--            </plugins>-->
+<!--        </pluginManagement>-->
+<!--    </build>-->
 
     <artifactId>Test</artifactId>
     <dependencies>

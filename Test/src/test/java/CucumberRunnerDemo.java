@@ -42,7 +42,10 @@ public class CucumberRunnerDemo {
 
     @DataProvider
     public Object[][] features() {
-        return testNGCucumberRunner.provideScenarios();
+        Object[][] test;
+        test = new Object[][]{{"1", "2"}, {"3", "4"}};
+        testNGCucumberRunner.provideScenarios();
+        return test;
     }
 
     @AfterClass(alwaysRun = true)

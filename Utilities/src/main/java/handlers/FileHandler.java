@@ -29,8 +29,8 @@ public class FileHandler {
             String line;
             line = inStream.readLine();
             while(line != null) {
-                line = inStream.readLine();
                 fileLines.add(line);
+                line = inStream.readLine();
             }
             inStream.close();
             fileReader.close();
@@ -48,6 +48,7 @@ public class FileHandler {
             inStream = new BufferedReader(fileReader);
             String line;
             line = inStream.readLine();
+            System.out.println(line);
             while(line != null) {
                 line = inStream.readLine();
                 fileLines.add(line);

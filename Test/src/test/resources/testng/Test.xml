@@ -3,7 +3,7 @@
 <suite name="Suite2" verbose="1" >
     <test name="printString2" >
         <classes>
-            <class name="TestNGTest">
+            <class name="TestNGRunnerDemo">
                 <methods>
                     <include name="printString" />
                     <exclude name="printInt" />
