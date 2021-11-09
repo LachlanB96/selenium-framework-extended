@@ -35,6 +35,11 @@ public class CucumberRunnerDemo {
 //        testNGCucumberRunner.runCucumber(cucumberFeature.getCucumberFeature());
 //    }
 
+//    @DataProvider
+//    public Object[][] features() {
+//        return testNGCucumberRunner.provideScenarios();
+//    }
+
     @DataProvider
     public Object[][] features() {
         return testNGCucumberRunner.provideScenarios();

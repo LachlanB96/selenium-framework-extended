@@ -29,7 +29,7 @@ public class CucumberRunner{
 //        testNGCucumberRunner.runCucumber(cucumberFeature.getCucumberFeature());
 //    }
 
-    @DataProvider
+    @DataProvider (name = "features")
     public Object[][] features() {
         return testNGCucumberRunner.provideScenarios();
     }
