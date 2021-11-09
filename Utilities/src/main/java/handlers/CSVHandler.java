@@ -18,13 +18,30 @@ public class CSVHandler {
     //TODO:
     // Make an object that contains the csv file as whole
     public static ArrayList<String> readCSV() throws IOException {
-        ArrayList<String> tempLines = FileHandler.readFile();
-        System.out.printf("Size: %d", tempLines.size());
-        String[][] dataTable = new String[tempLines.size()][];
-        for(String tempLine : tempLines){
-            String[] splitTempLine = tempLine.split(",");
+        ArrayList<String> sheet = FileHandler.readFile();
+        System.out.printf("Size: %d\n\n", sheet.size());
+        String[][] dataTable = new String[sheet.size()][];
+        int lineNumber = 0;
+        int colNum = 0;
+        for(String row : sheet){
+            String[] splitTempLine = row.split(",");
+            System.out.printf("Size: %d\n", splitTempLine.length);
+            dataTable[lineNumber] = new String[splitTempLine.length];
+            for(String cell : splitTempLine){
+                dataTable[lineNumber][colNum] = cell;
+                colNum++;
+            }
+            lineNumber++;
+            colNum = 0;
         }
-        return tempLines;
+
+        for(String[] row : dataTable){
+            for(String col : row){
+                System.out.printf("%s|", col);
+            }
+            System.out.printf("\n----------------------------\n");
+        }
+        return sheet;
 //        ArrayList<String> fileLines = new ArrayList<String>();
 //        try {
 //            inStream = new BufferedReader(fileReader);
