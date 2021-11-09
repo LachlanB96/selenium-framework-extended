@@ -1,5 +1,6 @@
 import handlers.CSVHandler;
 import handlers.FileHandler;
+import handlers.PrintHandler;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -32,12 +33,16 @@ public class TestNGRunnerDemo {
 
     @Test
     public void readCSV() throws IOException {
-
-
         CSVHandler.setFileName("sample.csv");
         CSVHandler.initialise();
-        for(String line : CSVHandler.readCSV()){
-            System.out.printf("%s\n", line);
+        PrintHandler.colourPrintf(String.format("\n----------\n"), "red");
+        for(String[] row : CSVHandler.readCSV()){
+            PrintHandler.colourPrintf(String.format("|"), "red");
+            for(String col : row){
+                PrintHandler.colourPrintf(String.format("%s", col), "blue");
+                PrintHandler.colourPrintf(String.format("|"), "red");
+            }
+            PrintHandler.colourPrintf(String.format("\n----------\n"), "red");
         }
     }
 

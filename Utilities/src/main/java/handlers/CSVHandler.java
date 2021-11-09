@@ -17,7 +17,7 @@ public class CSVHandler {
     }
     //TODO:
     // Make an object that contains the csv file as whole
-    public static ArrayList<String> readCSV() throws IOException {
+    public static String[][] readCSV() throws IOException {
         ArrayList<String> sheet = FileHandler.readFile();
         System.out.printf("Size: %d\n\n", sheet.size());
         String[][] dataTable = new String[sheet.size()][];
@@ -35,13 +35,8 @@ public class CSVHandler {
             colNum = 0;
         }
 
-        for(String[] row : dataTable){
-            for(String col : row){
-                System.out.printf("%s|", col);
-            }
-            System.out.printf("\n----------------------------\n");
-        }
-        return sheet;
+
+        return dataTable;
 //        ArrayList<String> fileLines = new ArrayList<String>();
 //        try {
 //            inStream = new BufferedReader(fileReader);
