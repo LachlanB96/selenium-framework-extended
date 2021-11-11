@@ -35,14 +35,14 @@ public class TestNGRunnerDemo {
     public void readCSV() throws IOException {
         CSVHandler.setFileName("sample.csv");
         CSVHandler.initialise();
-        PrintHandler.colourPrintf(String.format("\n----------\n"), "red");
+        PrintHandler.colourPrintf("\n----------\n", "red");
         for(String[] row : CSVHandler.readCSV()){
-            PrintHandler.colourPrintf(String.format("|"), "red");
+            PrintHandler.colourPrintf("|", "red");
             for(String col : row){
                 PrintHandler.colourPrintf(String.format("%s", col), "blue");
-                PrintHandler.colourPrintf(String.format("|"), "red");
+                PrintHandler.colourPrintf("|", "red");
             }
-            PrintHandler.colourPrintf(String.format("\n----------\n"), "red");
+            PrintHandler.colourPrintf("\n----------\n", "red");
         }
     }
 

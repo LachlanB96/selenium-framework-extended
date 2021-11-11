@@ -20,22 +20,28 @@ public class CucumberRunnerSimple {
         testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
     }
 
-    @Test(description = "Runs Cucumber Feature")
-    public void feature() {
-        //System.out.printf("Pickle: %s. Cucumber Feature: %s\n", pickle.getPickle().getName(), cucumberFeature.toString());
-        System.out.printf("TeSTT\n\n");
-        Object[][] scenarios = testNGCucumberRunner.provideScenarios();
-        for(Object[] scenario : scenarios){
-            for(Object simple : scenario){
-                System.out.printf(simple.toString());
-            }
-        }
+
+    @Test(description = "Runs Cucumber Feature", dataProvider = "features")
+    public void feature(PickleWrapper pickle, FeatureWrapper cucumberFeature) {
+        testNGCucumberRunner.runScenario(pickle.getPickle());
     }
 
-//    @DataProvider
-//    public Object[][] features() {
-//        return testNGCucumberRunner.provideScenarios();
+//    @Test(description = "Runs Cucumber Feature")
+//    public void feature() {
+//        //System.out.printf("Pickle: %s. Cucumber Feature: %s\n", pickle.getPickle().getName(), cucumberFeature.toString());
+//        System.out.printf("TeSTT\n\n");
+//        Object[][] scenarios = testNGCucumberRunner.provideScenarios();
+//        for(Object[] scenario : scenarios){
+//            for(Object simple : scenario){
+//                System.out.printf(simple.toString());
+//            }
+//        }
 //    }
+
+    @DataProvider
+    public Object[][] features() {
+        return testNGCucumberRunner.provideScenarios();
+    }
 
     @AfterClass(alwaysRun = true)
     public void tearDownClass() throws Exception {
