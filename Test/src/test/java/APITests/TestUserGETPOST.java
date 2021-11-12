@@ -2,36 +2,21 @@ package APITests;
 
 import gherkin.deps.com.google.gson.Gson;
 import handlers.APIHandler;
-import handlers.FileHandler;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 
 public class TestUserGETPOST {
 
-    private static String baseURI;
-    private static String resource;
-    private static String username;
-    private static String password;
-
     @BeforeTest
-    public void setup() throws IOException {
-        FileHandler.setFileName("../Websites/src/main/java/Marqeta/credentials.txt");
-        FileHandler.initialise();
-        ArrayList<String> credentials = FileHandler.readFile();
-
-        baseURI = "https://sandbox-api.marqeta.com";
-        resource = "/v3/users";
-        username = credentials.get(0);
-        password = credentials.get(1);
-
+    public void setup() {
+        Marqeta.ServiceProvider.init();
     }
 
     @Test
@@ -43,35 +28,21 @@ public class TestUserGETPOST {
     }
 
     @Test
-    public void getUsers() {
-        APIHandler.setBaseURI(baseURI);
-        APIHandler.setResource(resource);
-        APIHandler.setCredentials(username, password);
-
-        Response response = APIHandler.basicAuthGET();
-
+    public void getUsersWithServiceProvider() {
+        Response response = Marqeta.ServiceProvider.getUsers();
         System.out.println(response.asString());
-
         Assert.assertEquals(200, response.getStatusCode());
     }
 
     @Test
-    public void createUsers() {
+    public void createUsers2() {
         Map<String, String> bodyDataMap = new HashMap<>();
-
-        bodyDataMap.put("first_name", "test");
-        bodyDataMap.put("last_name", "map");
-
+        bodyDataMap.put("first_name", "NEW");
+        bodyDataMap.put("last_name", "USER");
         String json = new Gson().toJson(bodyDataMap);
 
-        APIHandler.setBaseURI(baseURI);
-        APIHandler.setResource(resource);
-        APIHandler.setCredentials(username, password);
-
-        Response response = APIHandler.basicAuthPOST(json);
-
+        Response response = Marqeta.ServiceProvider.createUser(json);
         System.out.println(response.asString());
-
         Assert.assertEquals(201, response.getStatusCode());
     }
 

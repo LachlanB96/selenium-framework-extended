@@ -23,6 +23,12 @@
             <artifactId>Utilities</artifactId>
             <version>0.0.1</version>
         </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>4.4.0</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
 </project>
