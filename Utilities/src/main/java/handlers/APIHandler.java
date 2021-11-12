@@ -26,6 +26,14 @@ public class APIHandler {
         APIHandler.password = password;
     }
 
+    public static Response basicGET() {
+        return given()
+                .header("Accept", ContentType.JSON.getAcceptHeader())
+                .contentType(ContentType.JSON)
+                .get(APIHandler.resource)
+                .then().extract().response();
+    }
+
     public static Response basicAuthGET() {
         return given()
                 .auth()

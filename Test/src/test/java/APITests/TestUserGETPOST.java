@@ -1,8 +1,8 @@
 package APITests;
 
+import gherkin.deps.com.google.gson.Gson;
 import handlers.APIHandler;
 import handlers.FileHandler;
-import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
@@ -10,9 +10,11 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 
-public class TestGet {
+public class TestUserGETPOST {
 
     private static String baseURI;
     private static String resource;
@@ -21,20 +23,22 @@ public class TestGet {
 
     @BeforeTest
     public void setup() throws IOException {
-        FileHandler.setFileName("creds.txt");
+        FileHandler.setFileName("../Websites/src/main/java/Marqeta/credentials.txt");
         FileHandler.initialise();
-        ArrayList<String> creds = FileHandler.readFile();
+        ArrayList<String> credentials = FileHandler.readFile();
 
         baseURI = "https://sandbox-api.marqeta.com";
         resource = "/v3/users";
-        username = creds.get(0);
-        password = creds.get(1);
+        username = credentials.get(0);
+        password = credentials.get(1);
 
     }
 
     @Test
     public void testGET() {
-        Response response = RestAssured.get("https://reqres.in/api/users");
+        APIHandler.setBaseURI("https://reqres.in");
+        APIHandler.setResource("/api/users");
+        Response response = APIHandler.basicGET();
         System.out.println(response.asString());
     }
 
@@ -53,29 +57,22 @@ public class TestGet {
 
     @Test
     public void createUsers() {
-        String bodyData = "{\n" +
-                "        \"first_name\": \"Test2\",\n" +
-                "        \"last_name\": \"User2\"\n" +
-                "        }";
+        Map<String, String> bodyDataMap = new HashMap<>();
+
+        bodyDataMap.put("first_name", "test");
+        bodyDataMap.put("last_name", "map");
+
+        String json = new Gson().toJson(bodyDataMap);
 
         APIHandler.setBaseURI(baseURI);
         APIHandler.setResource(resource);
         APIHandler.setCredentials(username, password);
 
-        Response response = APIHandler.basicAuthPOST(bodyData);
+        Response response = APIHandler.basicAuthPOST(json);
 
         System.out.println(response.asString());
 
         Assert.assertEquals(201, response.getStatusCode());
     }
-
-//    @Test
-//    public void getCreds() throws IOException {
-//        FileHandler.setFileName("creds.txt");
-//        FileHandler.initialise();
-//        ArrayList<String> creds = FileHandler.readFile();
-//        System.out.println(creds.get(0));
-//        System.out.println(creds.get(1));
-//    }
 
 }
