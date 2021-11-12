@@ -26,8 +26,8 @@ public class APIHandler {
         APIHandler.password = password;
     }
 
-    public static Response basicAuthGet() {
-        Response response = given()
+    public static Response basicAuthGET() {
+        return given()
                 .auth()
                 .preemptive()
                 .basic(username, password)
@@ -35,6 +35,17 @@ public class APIHandler {
                 .contentType(ContentType.JSON)
                 .get(APIHandler.resource)
                 .then().extract().response();
-        return response;
+    }
+
+    public static Response basicAuthPOST(String bodyData) {
+        return given()
+                .auth()
+                .preemptive()
+                .basic(username, password)
+                .header("Accept", ContentType.JSON.getAcceptHeader())
+                .contentType(ContentType.JSON)
+                .body(bodyData)
+                .post(APIHandler.resource)
+                .then().extract().response();
     }
 }
