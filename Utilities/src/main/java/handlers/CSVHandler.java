@@ -15,17 +15,14 @@ public class CSVHandler {
         FileHandler.setFileName(fileName);
         FileHandler.initialise();
     }
-    //TODO:
-    // Make an object that contains the csv file as whole
+
     public static String[][] readCSV() throws IOException {
         ArrayList<String> sheet = FileHandler.readFile();
-        System.out.printf("Size: %d\n\n", sheet.size());
         String[][] dataTable = new String[sheet.size()][];
         int lineNumber = 0;
         int colNum = 0;
         for(String row : sheet){
             String[] splitTempLine = row.split(",");
-            System.out.printf("Size: %d\n", splitTempLine.length);
             dataTable[lineNumber] = new String[splitTempLine.length];
             for(String cell : splitTempLine){
                 dataTable[lineNumber][colNum] = cell;
@@ -34,26 +31,7 @@ public class CSVHandler {
             lineNumber++;
             colNum = 0;
         }
-
-
         return dataTable;
-//        ArrayList<String> fileLines = new ArrayList<String>();
-//        try {
-//            inStream = new BufferedReader(fileReader);
-//            String line;
-//            line = inStream.readLine();
-//            while(line != null) {
-//                line = inStream.readLine();
-//                fileLines.add(line);
-//            }
-//            inStream.close();
-//            fileReader.close();
-//        } catch (IOException e) {
-//            System.out.println("111");
-//            e.printStackTrace();
-//            throw new IOException();
-//        }
-//        return fileLines;
     }
 
 

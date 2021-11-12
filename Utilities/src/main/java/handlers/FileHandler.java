@@ -35,7 +35,6 @@ public class FileHandler {
             inStream.close();
             fileReader.close();
         } catch (IOException e) {
-            System.out.println("111");
             e.printStackTrace();
             throw new IOException();
         }

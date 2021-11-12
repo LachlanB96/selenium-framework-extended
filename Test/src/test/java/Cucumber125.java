@@ -1,17 +1,16 @@
-import handlers.PrintHandler;
+import cucumber.runtime.model.CucumberFeature;
 import io.cucumber.testng.CucumberOptions;
 import io.cucumber.testng.FeatureWrapper;
 import io.cucumber.testng.PickleWrapper;
 import io.cucumber.testng.TestNGCucumberRunner;
-
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 
-@CucumberOptions(features = "src/test/resources/features/", glue = "")
-public class CucumberRunnerDemo {
+@CucumberOptions(features = "src/test/resources/features/Simple123Test.feature", glue = "MyStepDef")
+public class Cucumber125 {
 
     private TestNGCucumberRunner testNGCucumberRunner;
 
@@ -20,32 +19,18 @@ public class CucumberRunnerDemo {
         testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
     }
 
+
     @Test(description = "Runs Cucumber Feature", dataProvider = "features")
     public void feature(PickleWrapper pickle, FeatureWrapper cucumberFeature) {
-
-        System.out.printf("Pickle: %s. Cucumber Feature: %s\n", pickle.getPickle().getName(), cucumberFeature.toString());
-        if(pickle.getPickle().getName().equals("Test cucumber tests 111")){
-            PrintHandler.colourPrintf(String.format("%s \n", pickle), "purple");
-        }
         testNGCucumberRunner.runScenario(pickle.getPickle());
     }
 
-//    @Test(groups = "cucumber123", description = "Runs Cucumber Feature", dataProvider = "features")
-//    public void feature(CucumberFeatureWrapper cucumberFeature) {
-//        testNGCucumberRunner.runCucumber(cucumberFeature.getCucumberFeature());
-//    }
-
-//    @DataProvider
-//    public Object[][] features() {
-//        return testNGCucumberRunner.provideScenarios();
-//    }
 
     @DataProvider
     public Object[][] features() {
-        Object[][] test;
-        test = new Object[][]{{"1", "2"}, {"3", "4"}};
-        testNGCucumberRunner.provideScenarios();
-        return test;
+//        for(CucumberFeature feature : testNGCucumberRunner.get)
+//            testNGCucumberRunner.
+        return testNGCucumberRunner.provideScenarios();
     }
 
     @AfterClass(alwaysRun = true)

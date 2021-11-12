@@ -1,7 +1,10 @@
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+package StepDefinitions;
+
+import cucumber.api.java.en.And;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
 import org.testng.Assert;
 
 
@@ -36,24 +39,24 @@ public class MyStepdefs {
 
     @Given("A value of {int}")
     public void aValueOf(int a) {
-        MyStepdefs.a = a;
+        StepDefinitions.MyStepdefs.a = a;
     }
 
     @And("And a value of {int}")
     public void aValueOfB(int b) {
-        MyStepdefs.b = b;
+        StepDefinitions.MyStepdefs.b = b;
     }
 
     @When("I compare the value of a + b it should be {int}")
     public void iCompareTheValueOfABItShouldBeSum(int sum) {
-        MyStepdefs.sum = sum;
+        StepDefinitions.MyStepdefs.sum = sum;
     }
 
 
     @Then("We compare if sum was the desired output of {string}")
     public void weCompareIfSumWasTheDesiredOutputOfOutcome(String outcome) {
-        MyStepdefs.outcome = Boolean.getBoolean(outcome);
-        if(a + b == sum && MyStepdefs.outcome){
+        StepDefinitions.MyStepdefs.outcome = Boolean.getBoolean(outcome);
+        if(a + b == sum && StepDefinitions.MyStepdefs.outcome){
             assert true;
         }
     }

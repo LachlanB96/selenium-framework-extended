@@ -2,6 +2,7 @@
 
 <suite name="Suite2" verbose="1" >
     <test name="printString2" >
+        <parameter name="string" value="test/java/Cucumber125" />
         <classes>
             <class name="TestNGRunnerDemo">
                 <methods>
