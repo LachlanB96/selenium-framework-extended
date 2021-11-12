@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite2" verbose="1" >
+    <test name="printString2" >
+        <parameter name="string" value="test/java/Cucumber125" />
+        <classes>
+            <class name="TestNGRunnerDemo">
+                <methods>
+                    <include name="printString" />
+                    <exclude name="printInt" />
+<!--                    <include name="writeFile" />-->
+<!--                    <include name="readFile" />-->
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
