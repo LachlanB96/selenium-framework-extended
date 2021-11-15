@@ -2,6 +2,7 @@ package Marqeta;
 
 import gherkin.deps.com.google.gson.Gson;
 import handlers.APIHandler;
+import handlers.APIHandler2;
 import handlers.FileHandler;
 
 import java.io.IOException;
@@ -27,8 +28,11 @@ public class ServiceProvider {
         String username = credentials.get(0);
         String password = credentials.get(1);
         APIHandler.setCredentials(username, password);
+        APIHandler2.setCredentials(username, password);
+
         String baseURI = "https://sandbox-api.marqeta.com";
         APIHandler.setBaseURI(baseURI);
+        APIHandler2.setBaseURI(baseURI);
     }
 
     public static Response getUsers(){
@@ -54,5 +58,21 @@ public class ServiceProvider {
         System.out.println(resource);
         APIHandler.setResource(resource);
         return APIHandler.basicPUT(json);
+    }
+
+    public static Response getUser2() {
+        String resource = "/v3/users";
+        APIHandler2.setResource(resource);
+        return APIHandler2.makeRequest(true, APIHandler2.requestTypes.GET, "");
+    }
+
+    public static Response createUser2() {
+        String resource = "/v3/users";
+        APIHandler2.setResource(resource);
+        Map<String, String> bodyDataMap = new HashMap<>();
+        bodyDataMap.put("first_name", "Test");
+        bodyDataMap.put("last_name", "lastName");
+        String body = new Gson().toJson(bodyDataMap);
+        return APIHandler2.makeRequest(true, APIHandler2.requestTypes.POST, body);
     }
 }
