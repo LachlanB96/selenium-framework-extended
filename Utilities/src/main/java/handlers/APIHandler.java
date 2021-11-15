@@ -1,9 +1,13 @@
 package handlers;
 
 import io.restassured.RestAssured;
+import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import io.restassured.specification.ResponseSpecification;
+
+import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 
@@ -34,11 +38,13 @@ public class APIHandler {
         APIHandler.password = password;
     }
 
-    public static Response makeRequest(boolean basicAuth, requestTypes methodType, String bodyData){
+    public static Response makeRequest(requestTypes methodType, String bodyData, Map<String, String> authData){
 
         RequestSpecification reqSpec = RestAssured.given();
 
-        if(basicAuth) reqSpec.auth().basic(username, password);
+        if(authData.get("authType") != null){
+            reqSpec = useAuth(reqSpec, authData);
+        }
 
         reqSpec.header("Accept", ContentType.JSON.getAcceptHeader());
         reqSpec.contentType(ContentType.JSON);
@@ -54,9 +60,19 @@ public class APIHandler {
             case PUT:
                 response = reqSpec.body(bodyData).put(APIHandler.resource);
                 break;
+            case DELETE:
+                response = reqSpec.delete();
+                break;
             default:
                 throw new IllegalStateException("Unexpected value: " + methodType);
         }
         return response.then().extract().response();
+    }
+
+    public static RequestSpecification useAuth(RequestSpecification request, Map<String, String> authData){
+        if(authData.get("authType").equals("basic")){
+            return request.auth().basic(username, password);
+        }
+        return request;
     }
 }

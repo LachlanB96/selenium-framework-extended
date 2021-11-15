@@ -64,7 +64,9 @@ public class ServiceProvider {
     public static Response getUserGeneric() {
         String resource = "/v3/users";
         APIHandler.setResource(resource);
-        return APIHandler.makeRequest(true, APIHandler.requestTypes.GET, "");
+        Map<String, String> authData = new HashMap<>();
+        authData.put("authType", "basic");
+        return APIHandler.makeRequest(APIHandler.requestTypes.GET, "", authData);
     }
 
     public static Response createUserGeneric() {
@@ -74,7 +76,9 @@ public class ServiceProvider {
         bodyDataMap.put("first_name", "Bob555");
         bodyDataMap.put("last_name", "Sturt");
         String body = new Gson().toJson(bodyDataMap);
-        return APIHandler.makeRequest(true, APIHandler.requestTypes.POST, body);
+        Map<String, String> authData = new HashMap<>();
+        authData.put("authType", "basic");
+        return APIHandler.makeRequest(APIHandler.requestTypes.POST, body, authData);
     }
 
     public static Response updateUserGeneric(){
@@ -84,6 +88,27 @@ public class ServiceProvider {
         bodyDataMap.put("first_name", "Homer");
         bodyDataMap.put("last_name", "Simpson");
         String body = new Gson().toJson(bodyDataMap);
-        return APIHandler.makeRequest(true, APIHandler.requestTypes.PUT, body);
+        Map<String, String> authData = new HashMap<>();
+        authData.put("authType", "basic");
+        return APIHandler.makeRequest(APIHandler.requestTypes.PUT, body, authData);
+    }
+
+    public static Response deleteUserGeneric(){
+        String resource = "/v3/users";
+        APIHandler.setResource(resource);
+        Map<String, String> bodyDataMap = new HashMap<>();
+        bodyDataMap.put("first_name", "Delete");
+        bodyDataMap.put("last_name", "Me Please");
+        String body = new Gson().toJson(bodyDataMap);
+        Map<String, String> authData = new HashMap<>();
+        authData.put("authType", "basic");
+        Response response = APIHandler.makeRequest(APIHandler.requestTypes.POST, body, authData);
+        System.out.println(response.asString());
+        String token = response.path("token").toString();
+        resource = "/v3/users/" + token;
+        APIHandler.setResource(resource);
+        response = APIHandler.makeRequest(APIHandler.requestTypes.DELETE, "", authData);
+        System.out.println(response.asString());
+        return response;
     }
 }

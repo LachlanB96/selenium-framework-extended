@@ -31,4 +31,12 @@ public class TestRestAssured {
         Response response = Marqeta.ServiceProvider.updateUserGeneric();
         System.out.println(response.asString());
     }
+
+    @Test
+    public void deleteUserBasicAuth(){
+        Response response = Marqeta.ServiceProvider.deleteUserGeneric();
+        System.out.println(response.asString());
+    }
+
+
 }
