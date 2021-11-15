@@ -1,13 +1,12 @@
 package APITests;
 
 import gherkin.deps.com.google.gson.Gson;
-import handlers.APIHandler;
+import handlers.OldAPIHandler;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,9 +20,9 @@ public class TestUserGETPOST {
 
     @Test
     public void testGET() {
-        APIHandler.setBaseURI("https://reqres.in");
-        APIHandler.setResource("/api/users");
-        Response response = APIHandler.basicGET();
+        OldAPIHandler.setBaseURI("https://reqres.in");
+        OldAPIHandler.setResource("/api/users");
+        Response response = OldAPIHandler.basicGET();
         System.out.println(response.asString());
     }
 

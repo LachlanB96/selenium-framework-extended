@@ -3,11 +3,19 @@ package handlers;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 
 import static io.restassured.RestAssured.given;
 
 
 public class APIHandler {
+
+    public enum requestTypes {
+        GET,
+        POST,
+        PUT,
+        DELETE
+    }
 
     private static String username;
     private static String password;
@@ -26,46 +34,29 @@ public class APIHandler {
         APIHandler.password = password;
     }
 
-    public static Response basicGET() {
-        return given()
-                .header("Accept", ContentType.JSON.getAcceptHeader())
-                .contentType(ContentType.JSON)
-                .get(APIHandler.resource)
-                .then().extract().response();
-    }
+    public static Response makeRequest(boolean basicAuth, requestTypes methodType, String bodyData){
 
-    public static Response basicAuthGET() {
-        return given()
-                .auth()
-                .preemptive()
-                .basic(username, password)
-                .header("Accept", ContentType.JSON.getAcceptHeader())
-                .contentType(ContentType.JSON)
-                .get(APIHandler.resource)
-                .then().extract().response();
-    }
+        RequestSpecification reqSpec = RestAssured.given();
 
-    public static Response basicAuthPOST(String bodyData) {
-        return given()
-                .auth()
-                .preemptive()
-                .basic(username, password)
-                .header("Accept", ContentType.JSON.getAcceptHeader())
-                .contentType(ContentType.JSON)
-                .body(bodyData)
-                .post(APIHandler.resource)
-                .then().extract().response();
-    }
+        if(basicAuth) reqSpec.auth().basic(username, password);
 
-    public static Response basicPUT(String bodyData) {
-        return given()
-                .auth()
-                .preemptive()
-                .basic(username, password)
-                .header("Accept", ContentType.JSON.getAcceptHeader())
-                .contentType(ContentType.JSON)
-                .body(bodyData)
-                .put(APIHandler.resource)
-                .then().extract().response();
+        reqSpec.header("Accept", ContentType.JSON.getAcceptHeader());
+        reqSpec.contentType(ContentType.JSON);
+
+        Response response;
+        switch (methodType) {
+            case GET:
+                response = reqSpec.get(APIHandler.resource);
+                break;
+            case POST:
+                response = reqSpec.body(bodyData).post(APIHandler.resource);
+                break;
+            case PUT:
+                response = reqSpec.body(bodyData).put(APIHandler.resource);
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + methodType);
+        }
+        return response.then().extract().response();
     }
 }

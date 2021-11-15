@@ -1,7 +1,6 @@
 package APITests;
 
 import gherkin.deps.com.google.gson.Gson;
-import handlers.APIHandler;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.testng.Assert;

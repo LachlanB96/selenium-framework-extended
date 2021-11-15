@@ -14,14 +14,21 @@ public class TestRestAssured {
     }
 
     @Test
+    public void getUserBasicAuth(){
+        Response response = Marqeta.ServiceProvider.getUserGeneric();
+        System.out.println(response.asString());
+    }
+
+
+    @Test
     public void createUserBasicAuth(){
-        Response response = Marqeta.ServiceProvider.createUser2();
+        Response response = Marqeta.ServiceProvider.createUserGeneric();
         System.out.println(response.asString());
     }
 
     @Test
-    public void getUserBasicAuth(){
-        Response response = Marqeta.ServiceProvider.getUser2();
+    public void updateUser(){
+        Response response = Marqeta.ServiceProvider.updateUserGeneric();
         System.out.println(response.asString());
     }
 }

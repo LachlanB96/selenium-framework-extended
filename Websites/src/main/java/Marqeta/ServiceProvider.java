@@ -1,8 +1,8 @@
 package Marqeta;
 
 import gherkin.deps.com.google.gson.Gson;
+import handlers.OldAPIHandler;
 import handlers.APIHandler;
-import handlers.APIHandler2;
 import handlers.FileHandler;
 
 import java.io.IOException;
@@ -27,52 +27,63 @@ public class ServiceProvider {
         assert credentials != null;
         String username = credentials.get(0);
         String password = credentials.get(1);
+        OldAPIHandler.setCredentials(username, password);
         APIHandler.setCredentials(username, password);
-        APIHandler2.setCredentials(username, password);
 
         String baseURI = "https://sandbox-api.marqeta.com";
+        OldAPIHandler.setBaseURI(baseURI);
         APIHandler.setBaseURI(baseURI);
-        APIHandler2.setBaseURI(baseURI);
     }
 
     public static Response getUsers(){
         String resource = "/v3/users";
-        APIHandler.setResource(resource);
-        return APIHandler.basicAuthGET();
+        OldAPIHandler.setResource(resource);
+        return OldAPIHandler.basicAuthGET();
     }
 
     public static Response createUser(String bodyData){
         String resource = "/v3/users";
-        APIHandler.setResource(resource);
-        return APIHandler.basicAuthPOST(bodyData);
+        OldAPIHandler.setResource(resource);
+        return OldAPIHandler.basicAuthPOST(bodyData);
     }
 
     public static Response getUserByToken(String userToken) {
         String resource = String.format("/v3/users/%s", userToken);
-        APIHandler.setResource(resource);
-        return APIHandler.basicAuthGET();
+        OldAPIHandler.setResource(resource);
+        return OldAPIHandler.basicAuthGET();
     }
 
     public static Response updateUserByToken(String userToken, String json) {
         String resource = String.format("/v3/users/%s", userToken);
         System.out.println(resource);
+        OldAPIHandler.setResource(resource);
+        return OldAPIHandler.basicPUT(json);
+    }
+
+
+    public static Response getUserGeneric() {
+        String resource = "/v3/users";
         APIHandler.setResource(resource);
-        return APIHandler.basicPUT(json);
+        return APIHandler.makeRequest(true, APIHandler.requestTypes.GET, "");
     }
 
-    public static Response getUser2() {
+    public static Response createUserGeneric() {
         String resource = "/v3/users";
-        APIHandler2.setResource(resource);
-        return APIHandler2.makeRequest(true, APIHandler2.requestTypes.GET, "");
-    }
-
-    public static Response createUser2() {
-        String resource = "/v3/users";
-        APIHandler2.setResource(resource);
+        APIHandler.setResource(resource);
         Map<String, String> bodyDataMap = new HashMap<>();
-        bodyDataMap.put("first_name", "Test");
-        bodyDataMap.put("last_name", "lastName");
+        bodyDataMap.put("first_name", "Bob555");
+        bodyDataMap.put("last_name", "Sturt");
         String body = new Gson().toJson(bodyDataMap);
-        return APIHandler2.makeRequest(true, APIHandler2.requestTypes.POST, body);
+        return APIHandler.makeRequest(true, APIHandler.requestTypes.POST, body);
+    }
+
+    public static Response updateUserGeneric(){
+        String resource = "/v3/users/114f0af1-254f-4609-b315-bf833fd0e211";
+        APIHandler.setResource(resource);
+        Map<String, String> bodyDataMap = new HashMap<>();
+        bodyDataMap.put("first_name", "Homer");
+        bodyDataMap.put("last_name", "Simpson");
+        String body = new Gson().toJson(bodyDataMap);
+        return APIHandler.makeRequest(true, APIHandler.requestTypes.PUT, body);
     }
 }
