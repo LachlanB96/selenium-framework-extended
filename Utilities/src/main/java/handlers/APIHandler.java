@@ -56,4 +56,16 @@ public class APIHandler {
                 .post(APIHandler.resource)
                 .then().extract().response();
     }
+
+    public static Response basicPUT(String bodyData) {
+        return given()
+                .auth()
+                .preemptive()
+                .basic(username, password)
+                .header("Accept", ContentType.JSON.getAcceptHeader())
+                .contentType(ContentType.JSON)
+                .body(bodyData)
+                .put(APIHandler.resource)
+                .then().extract().response();
+    }
 }

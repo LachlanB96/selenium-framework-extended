@@ -1,6 +1,7 @@
 import handlers.CSVHandler;
 import handlers.FileHandler;
 import handlers.PrintHandler;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -10,7 +11,7 @@ public class TestNGRunnerDemo {
 
     @Parameters({ "string" })
     @Test
-    public void printString(String val){
+    public void printString(@Optional("DEFAULT") String val){
         System.out.printf("TestNG Runner Demo %s\n", val);
     }
 

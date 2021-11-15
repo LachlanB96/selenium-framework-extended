@@ -42,4 +42,17 @@ public class ServiceProvider {
         APIHandler.setResource(resource);
         return APIHandler.basicAuthPOST(bodyData);
     }
+
+    public static Response getUserByToken(String userToken) {
+        String resource = String.format("/v3/users/%s", userToken);
+        APIHandler.setResource(resource);
+        return APIHandler.basicAuthGET();
+    }
+
+    public static Response updateUserByToken(String userToken, String json) {
+        String resource = String.format("/v3/users/%s", userToken);
+        System.out.println(resource);
+        APIHandler.setResource(resource);
+        return APIHandler.basicPUT(json);
+    }
 }

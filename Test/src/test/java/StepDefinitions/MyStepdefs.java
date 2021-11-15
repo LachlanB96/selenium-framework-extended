@@ -26,7 +26,7 @@ public class MyStepdefs {
         testString1 = str;
     }
 
-    @When("I check if the given string is {int}")
+    @When("^I check if the given string is (\\d+)$")
     public void iCheckIfTheGivenStringIs(int arg0) {
         System.out.printf("A string containing '%d'\n", arg0);
         testString2 = Integer.toString(arg0);
@@ -37,27 +37,28 @@ public class MyStepdefs {
         Assert.assertEquals(testString1, testString2);
     }
 
-    @Given("A value of {int}")
+    @Given("A value of (\\d+)")
     public void aValueOf(int a) {
         StepDefinitions.MyStepdefs.a = a;
     }
 
-    @And("And a value of {int}")
+    @And("And a value of (\\d+)")
     public void aValueOfB(int b) {
         StepDefinitions.MyStepdefs.b = b;
     }
 
-    @When("I compare the value of a + b it should be {int}")
+    @When("I compare the value of a \\+ b it should be (\\d+)")
     public void iCompareTheValueOfABItShouldBeSum(int sum) {
         StepDefinitions.MyStepdefs.sum = sum;
     }
 
 
-    @Then("We compare if sum was the desired output of {string}")
+    @Then("We compare if sum was the desired output of \"(.*?)\"")
     public void weCompareIfSumWasTheDesiredOutputOfOutcome(String outcome) {
         StepDefinitions.MyStepdefs.outcome = Boolean.getBoolean(outcome);
         if(a + b == sum && StepDefinitions.MyStepdefs.outcome){
             assert true;
         }
     }
+
 }

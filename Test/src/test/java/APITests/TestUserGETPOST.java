@@ -35,7 +35,7 @@ public class TestUserGETPOST {
     }
 
     @Test
-    public void createUsers2() {
+    public void createUsers() {
         Map<String, String> bodyDataMap = new HashMap<>();
         bodyDataMap.put("first_name", "NEW");
         bodyDataMap.put("last_name", "USER");
