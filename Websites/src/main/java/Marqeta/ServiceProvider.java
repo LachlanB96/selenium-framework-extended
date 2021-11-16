@@ -35,13 +35,13 @@ public class ServiceProvider {
         APIHandler.setBaseURI(baseURI);
     }
 
-    public static Response getUsers(){
+    public static Response getUsersBasic(){
         String resource = "/v3/users";
         OldAPIHandler.setResource(resource);
         return OldAPIHandler.basicAuthGET();
     }
 
-    public static Response createUser(String bodyData){
+    public static Response createUserBasic(String bodyData){
         String resource = "/v3/users";
         OldAPIHandler.setResource(resource);
         return OldAPIHandler.basicAuthPOST(bodyData);
@@ -110,5 +110,14 @@ public class ServiceProvider {
         response = APIHandler.makeRequest(APIHandler.requestTypes.DELETE, "", authData);
         System.out.println(response.asString());
         return response;
+    }
+
+    public static Response createUser(Map<String, String> bodyDataMap) {
+        String resource = "/v3/users";
+        APIHandler.setResource(resource);
+        String body = new Gson().toJson(bodyDataMap);
+        Map<String, String> authData = new HashMap<>();
+        authData.put("authType", "basic");
+        return APIHandler.makeRequest(APIHandler.requestTypes.POST, body, authData);
     }
 }

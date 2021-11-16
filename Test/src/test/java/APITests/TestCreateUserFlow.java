@@ -30,7 +30,7 @@ public class TestCreateUserFlow {
         bodyDataMap.put("last_name", lastName);
         String json = new Gson().toJson(bodyDataMap);
 
-        Response response = Marqeta.ServiceProvider.createUser(json);
+        Response response = Marqeta.ServiceProvider.createUserBasic(json);
 
         JsonPath jsonPathEvaluator = response.jsonPath();
         userToken = jsonPathEvaluator.get("token");

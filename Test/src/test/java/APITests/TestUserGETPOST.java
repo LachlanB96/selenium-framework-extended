@@ -28,7 +28,7 @@ public class TestUserGETPOST {
 
     @Test
     public void getUsersWithServiceProvider() {
-        Response response = Marqeta.ServiceProvider.getUsers();
+        Response response = Marqeta.ServiceProvider.getUsersBasic();
         System.out.println(response.asString());
         Assert.assertEquals(200, response.getStatusCode());
     }
@@ -40,7 +40,7 @@ public class TestUserGETPOST {
         bodyDataMap.put("last_name", "USER");
         String json = new Gson().toJson(bodyDataMap);
 
-        Response response = Marqeta.ServiceProvider.createUser(json);
+        Response response = Marqeta.ServiceProvider.createUserBasic(json);
         System.out.println(response.asString());
         Assert.assertEquals(201, response.getStatusCode());
     }

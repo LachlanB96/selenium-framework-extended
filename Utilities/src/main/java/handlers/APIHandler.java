@@ -61,7 +61,7 @@ public class APIHandler {
                 response = reqSpec.body(bodyData).put(APIHandler.resource);
                 break;
             case DELETE:
-                response = reqSpec.delete();
+                response = reqSpec.delete(APIHandler.resource);
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + methodType);
