@@ -8,16 +8,21 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.testng.Assert;
 
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class MarqetaCreateUserCardFlow {
 
     private static Map<String, String> dataTableGlobal;
+
     private static String userToken;
     private static String cardProdToken;
-    private static int responseCode;
+    private static String cardToken;
+
     private static Response createUserRes;
     private static Response createCardProdRes;
+    private static Response createCardRes;
 
     //Used for all Scenarios
     @Given("^I have initialised the APIHandler for use$")
@@ -53,8 +58,8 @@ public class MarqetaCreateUserCardFlow {
         dataTableGlobal = data;
     }
 
-    @When("^I create the card$")
-    public void iCreateTheCard() {
+    @When("^I create the card product$")
+    public void iCreateTheCardProduct() {
         createCardProdRes = Marqeta.ServiceProvider.createBasicCardProduct(dataTableGlobal);
     }
 
@@ -65,7 +70,34 @@ public class MarqetaCreateUserCardFlow {
         Assert.assertEquals(createCardProdRes.statusCode(), expectedResponse);
     }
 
+
     //---Create a Card---
 
+    @And("^I have the following table of field data for the card$")
+    public void iHaveTheFollowingTableOfFieldDataForTheCard(Map<String, String> data) {
+        dataTableGlobal = data;
+    }
+
+    @When("^I create the card$")
+    public void iCreateTheCard() {
+        Map<String, String> newDataTable = new LinkedHashMap<>();
+        for (Map.Entry<String, String> field : dataTableGlobal.entrySet()) {
+            String key = (field.getKey() == null) ? null : field.getKey();
+            newDataTable.put(key, field.getValue());
+        }
+
+        newDataTable.put("user_token", userToken);
+        newDataTable.put("card_product_token", cardProdToken);
+        System.out.println(newDataTable);
+        createCardRes = Marqeta.ServiceProvider.createBasicCard(newDataTable);
+    }
+
+    @Then("^I should get a (\\d+) server response and I store the card token$")
+    public void iShouldGetAServerResponseAndIStoreTheCardToken(int expectedResponse) {
+        JsonPath jsonPathEvaluator = createCardRes.jsonPath();
+        cardToken = jsonPathEvaluator.get("token");
+        Assert.assertEquals(createCardRes.statusCode(), expectedResponse);
+        System.out.println(cardToken);
+    }
 
 }

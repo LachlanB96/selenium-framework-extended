@@ -139,4 +139,13 @@ public class ServiceProvider {
         return APIHandler.makeRequest(APIHandler.requestTypes.POST, body, authData);
     }
 
+    public static Response createBasicCard(Map<String, String> bodyDataMap) {
+        String resource = "/v3/cards";
+        APIHandler.setResource(resource);
+        String body = new Gson().toJson(bodyDataMap);
+        Map<String, String> authData = new HashMap<>();
+        authData.put("authType", "basic");
+        return APIHandler.makeRequest(APIHandler.requestTypes.POST, body, authData);
+    }
+
 }
