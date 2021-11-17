@@ -1,6 +1,6 @@
 @SimpleFeature
 Feature: Test Module - String to Int comparison
-  # Background: find examples and use
+  # Background: find examples and usee
 
   Scenario: Test cucumber tests 111
     Given A string containing "111"
