@@ -80,12 +80,11 @@ public class MarqetaCreateUserCardFlow {
 
     @When("^I create the card$")
     public void iCreateTheCard() {
-        Map<String, String> newDataTable = new LinkedHashMap<>();
+        Map<String, String> newDataTable = new HashMap<>();
         for (Map.Entry<String, String> field : dataTableGlobal.entrySet()) {
             String key = (field.getKey() == null) ? null : field.getKey();
             newDataTable.put(key, field.getValue());
         }
-
         newDataTable.put("user_token", userToken);
         newDataTable.put("card_product_token", cardProdToken);
         System.out.println(newDataTable);
