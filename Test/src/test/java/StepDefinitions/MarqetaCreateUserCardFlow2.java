@@ -2,14 +2,17 @@ package StepDefinitions;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class MarqetaCreateUserCardFlow2 {
 
     private static Map<String, Object> headerParams;
     private static Map<String, Object> bodyParams;
-    private static Map<String, Object> assertions;
+    private static Map<String, String> assertions;
     private static Map<String, Object> extractions;
 
     @Given("^I set the environment to \"([^\"]*)\"$")
@@ -45,9 +48,31 @@ public class MarqetaCreateUserCardFlow2 {
         }
         for(Map.Entry<String, String> entry : dataTable.entrySet()){
             if(entry.getKey().charAt(0) == '@'){
-                System.out.println("!");
-                System.out.println(entry);
-                System.out.println("!");
+                //System.out.println("!");
+                //System.out.println(entry);
+                //System.out.println("!");
+                String specialEntry = entry.getKey().substring(1);
+                String specialEntryType = specialEntry.split(":")[0];
+                String specialEntryKey = specialEntry.split(":")[1].substring(1);
+                //System.out.println(entry.getKey().substring(1));
+                //System.out.printf("\nSpecial entry type = %s", specialEntryType);
+
+                switch (specialEntryType){
+                    case "assert":
+                        if(assertions == null){
+                            assertions = new HashMap<String, String>();
+                        }
+                        assertions.put(specialEntryKey, entry.getValue());
+                        break;
+                    case "extract":
+                        if(extractions == null){
+                            extractions = new HashMap<String, Object>();
+                        }
+                        extractions.put(specialEntryKey, entry.getValue());
+                        break;
+                    default:
+                        throw new Exception(String.format("No such special entry exist: %s", specialEntryType));
+                }
             } else {
                 System.out.printf("Key = %s, Value = %s", entry.getKey(), entry.getValue());
             }
@@ -55,6 +80,17 @@ public class MarqetaCreateUserCardFlow2 {
         System.out.println(request);
         System.out.println(dataTable);
         System.out.println(endpoint);
+        System.out.printf("\nAssertions: %s\n", assertions);
+        System.out.printf("\nExtractions: %s\n", extractions);
         //throw new PendingException();
+    }
+
+    @When("^I send the request off and store the response$")
+    public void iSendTheRequestOffAndStoreTheResponse() {
+
+    }
+
+    @Then("^I assert and extract the variables$")
+    public void iAssertAndExtractTheVariables() {
     }
 }

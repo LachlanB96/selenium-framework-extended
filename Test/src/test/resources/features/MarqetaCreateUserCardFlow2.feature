@@ -13,6 +13,7 @@ Feature: Creates a marqeta user, card product, and card for that user
         | postal_code           | 94702             |
         | @assert: responseCode | 201               |
         | @extract: token       | userTokenVar      |
+        | @extract: first_name  | userFirstNameVar  |
       When I send the request off and store the response
       Then I assert and extract the variables
 
