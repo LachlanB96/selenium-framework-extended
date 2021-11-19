@@ -92,11 +92,16 @@ public class MarqetaCreateUserCardFlow2 {
     @Then("^I assert and extract the variables$")
     public void iAssertAndExtractTheVariables() {
         int fakeResponseCode = 201;
+        String fakeFirstName = "Lach";
         for(Map.Entry<String, String> entry : assertions.entrySet()){
             switch(entry.getKey()){
                 case "responseCode":
                     Assert.assertEquals(entry.getValue(), String.valueOf(fakeResponseCode));
-                    System.out.printf(String.valueOf(fakeResponseCode));
+                    System.out.print(String.valueOf(fakeResponseCode));
+                    break;
+                case "first_name":
+                    Assert.assertEquals(entry.getValue(), String.valueOf(fakeFirstName));
+                    System.out.print(String.valueOf(fakeFirstName));
                     break;
             }
         }
