@@ -58,6 +58,12 @@ public class MarqetaCreateUserCardFlow2 {
                 //System.out.printf("\nSpecial entry type = %s", specialEntryType);
 
                 switch (specialEntryType){
+                    case "header":
+                        if(headerParams == null){
+                            headerParams = new HashMap<String, Object>();
+                        }
+                        headerParams.put(specialEntryKey, entry.getValue());
+                        break;
                     case "assert":
                         if(assertions == null){
                             assertions = new HashMap<String, String>();
@@ -80,6 +86,7 @@ public class MarqetaCreateUserCardFlow2 {
         System.out.println(request);
         System.out.println(dataTable);
         System.out.println(endpoint);
+        System.out.printf("\nHeaders: %s\n", headerParams);
         System.out.printf("\nAssertions: %s\n", assertions);
         System.out.printf("\nExtractions: %s\n", extractions);
         //throw new PendingException();

@@ -4,6 +4,7 @@ Feature: Creates a marqeta user, card product, and card for that user
     Scenario: Create a Marqeta User
       Given I set the environment to "MARQETA_SANDBOX"
       And I create a "CREATE_USER" request with the following
+        | @header: contentType  | JSON              |
         | first_name            | Lach              |
         | last_name             | Bro               |
         | address1              | 1234 Grove Street |
